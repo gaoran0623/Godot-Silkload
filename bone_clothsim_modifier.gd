@@ -18,6 +18,9 @@ var PM_spacing = 0.2 # Length of links between nodes
 ##decide if the verlet particle should be able to collide at the root.Normally the root will NOT be colliding, but who knows
 @export var collideAtRoot: bool =false
 
+##If the skeleton has a lot of bones, it's not convinient to select one by one, I'd rather type the names as Strings here
+@export var rootBoneNameList = PackedStringArray()
+
 ##Sometimes you don't want the whole bonechain to be simulated like cloth, in case that you need part of the bone chain to act
 @export var trim_bonechain_by: int =0
 
@@ -58,6 +61,7 @@ class nonCollisionPoint:
 	var acceleration = Vector3(0,-massFactor,0) # Gravity or other external forces. 
 	var entered_body = false;
 	var is_pin = false
+	var grvty = Vector3(0,-9.8,0) # Gravity or other external forces,NOT using native mass of RigidBody3D
 	var collision_factor = 1.0 # Read docs for what this does
 	var dampen_factor :float= .98#0.98
 	@onready var last_global_position = global_position
@@ -76,16 +80,19 @@ class nonCollisionPoint:
 		indicator.mesh = shape
 		self.add_child(indicator)	
 	func do_verlet(delta):
-		var accelerationFactor = 1  
-		var inertiaForceFactor = 1
+		var accelerationFactor = 1  #mainly gravity
+		var inertiaForceFactor = 150
 		velocity = position - last_position
 		inertiaForce=global_transform.basis.inverse()*(global_position-last_global_position)
+		#velocity=global_transform.basis.inverse()*(global_position-last_global_position)
 		last_position = position
 		last_global_position = global_position
 		last_global_trans_basis_inverse=global_transform.basis.inverse()
 		velocity *= dampen_factor # damping
-		position = position + (velocity * delta * 60) + (acceleration * delta * accelerationFactor) + (inertiaForce * delta * 1)
-
+		#verlet algorithm
+		position = position + (velocity * delta * 60) + (massFactor* grvty * delta * accelerationFactor) - (massFactor * inertiaForce *  delta * inertiaForceFactor)
+		#position = 2*position - last_position + (grvty)*delta*delta*2
+		#position = get_parent().get_parent().to_local(2*global_position - last_global_position) + (grvty)*delta*delta
 
 ###############################################
 
@@ -229,8 +236,7 @@ func link_PM():
 
 
 
-##If the skeleton has a lot of bones, it's not convinient to select one by one, I'd rather type the names as Strings here
-@export var rootBoneNameList = PackedStringArray()
+
 var boneIndexMatrix=[] #storing all clothsim bone indexs
 var PMpositionMatrix=[]
 
