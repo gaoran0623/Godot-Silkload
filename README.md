@@ -1,4 +1,4 @@
-# Godot-Shampoo
+# Godot-Silkload
 
  A bone-driven cloth simulation solution for godot4.4+ 3D games, based on verlet integration algorithm.
 
