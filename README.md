@@ -70,17 +70,14 @@ bone[3]
 
 ### Colliders
 
-The Rigidbody3Ds that is instanced in prepresent of the bones
+The Rigidbody3Ds that are instanced in prepresent of the bones
 
 # 
 
 # Options
 
-
-
 <p align="center">
    <img src="media/Exports2025-03-03 233534.png" />
-
 
 #### Node Disabled
 
@@ -132,5 +129,3 @@ Along the bone chain that existing available colliders, set the derating ratio o
 #### Closed Bone Loop
 
 Simulate a cylinder-like cloth such as skirt: true, or else a piece of cloth, such as flag: false
-
-
