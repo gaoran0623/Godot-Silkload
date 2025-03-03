@@ -26,6 +26,7 @@ Each bone  will be looking at "their own" rigidbody3D, the bone will drive the m
 
 a chain of bones, for example:
 
+```
 bone[0]
 
   |
@@ -36,9 +37,10 @@ bone[1]
 
 bone[2]
 
-|
+  |
 
 bone[3]
+```
 
 
 
@@ -48,23 +50,31 @@ In Blender, each bone has a "head" and a "tail", in other words, in Blender, eac
 
 
 
+You need at least two bone chains to make a "cloth", otherwise it will be only a "belt", but it should also work
+
+
+
 ### Root bone
 
 The first bone of a bone chain, but you can alway consider, for example:
 
-bone[0]   <--this is the root bone of the whole chain 
+```
+bone[0] <--this is the root bone of the whole chain
 
- |
+  |
 
-bone[1]   <--this is the root bone of chain bone1 to bone3
+bone[1] <--this is the root bone of chain bone1 to bone3
 
- |
+  |
 
 bone[2]
 
- |
+  |
 
 bone[3]
+```
+
+
 
 ### Colliders
 
@@ -124,3 +134,23 @@ Simulate a cylinder-like cloth such as skirt: true, or a piece of cloth, such as
 ##### Root Bone Name List
 
 If the skeleton has a lot of bones, it's not convinient to select one by one, I'd rather type the names as Strings here. Just create the list of the names of the bone chains
+
+
+
+```
+bone[0][0] bone[1][0] bone[2][0] bone[3][0] bone[4][0]  ───┐   <--You can decide if first bone should collide
+    |          |          |          |          |          | |
+bone[0][1] bone[1][1] bone[2][1] bone[3][1] bone[4][1]     | |
+    |          |          |          |          |          | |These bones will be simulated
+bone[0][2] bone[1][2] bone[2][2] bone[3][2] bone[4][2]     | |   
+    |          |          |          |          |          | |  
+bone[0][3] bone[1][3] bone[2][3] bone[3][3] bone[4][3]     | | 
+    |          |          |          |          |          | ▼ Collider Size Curve direction
+bone[0][4] bone[1][4] bone[2][4] bone[3][4] bone[4][4]  ───┘ 
+-----------------------trim = 2 (for example)----------------------
+    |          |          |          |          |        ───┐
+bone[0][5] bone[1][5] bone[2][5] bone[3][5] bone[4][5]      |These bones will not be simulated
+    |          |          |          |          |           |
+bone[0][6] bone[1][6] bone[2][6] bone[3][6] bone[4][6]   ───┘  
+        
+```
