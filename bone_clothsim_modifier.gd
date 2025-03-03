@@ -149,7 +149,7 @@ class collisionPoint:
 			velocity *= collision_factor
 		velocity *= dampen_factor # damping
 		#verlet algorithm
-		position = position + (velocity * delta * 60) + (massFactor* grvty * delta * accelerationFactor) #- (massFactor * inertiaForce *  delta * inertiaForceFactor)
+		position = position + (velocity * delta * 60) + (massFactor* grvty * delta * accelerationFactor) - (massFactor * inertiaForce *  delta * inertiaForceFactor)
 		#position = 2*position - last_position + (grvty)*delta*delta*2
 		#position = get_parent().get_parent().to_local(2*global_position - last_global_position) + (grvty)*delta*delta
 
