@@ -1,6 +1,6 @@
 # Godot-Shampoo
 
- A bone-driven cloth simulation solution for godot
+ A bone-driven cloth simulation solution for godot4.4+ 3D games, based on verlet integration algorithm.
 
 # How does it work
 
@@ -12,7 +12,11 @@ The collision is done by native methods of Rigidbody3D, you need some StaticBody
 
 Each bone  will be looking at "their own" rigidbody3D, the bone will drive the mesh to perform like cloth
 
-## Concepts
+# Usage
+
+Put the .gd file anywhere in your project, add child to Skeleton3D, and choose "ClothsimModifier"
+
+# Concepts
 
 ### Bone chain
 
@@ -36,9 +40,9 @@ bone[3]
 
 You need at least two bones to make a bone chain. 
 
-In Blender, each bone has a "head" and a "tail", in other words, in Blender, each bone has "length", but in Godot, each bone has only its own coordinate, but no length. I need  the last second bone to interpolate where the last bone should be pointing at.
+Reason: In Blender, each bone has a "head" and a "tail",  in other words, in Blender, each bone has "length". But after Armatures or Skeletons converted into Godot or a lot of other 3D software, each bone has only its own coordinate and transform, but no length. Meanwhile, I need the last second bone to interpolate where the last bone should be pointing at.
 
-You need at least two bone chains to make a "cloth", otherwise it will be only a "belt", but it should also work
+You need at least two bone chains to make a "cloth", otherwise it will be only a "belt" or "chain", but it should also work if that's what you expected.
 
 ### Root bone
 
@@ -62,11 +66,9 @@ bone[3]
 
 ### Colliders
 
-the Rigidbody3Ds that is instanced in prepresent of the bones
+The Rigidbody3Ds that is instanced in prepresent of the bones
 
-# Usage
-
-Put the .gd file anywhere in your project, add child to Skeleton3D, and choose "ClothsimModifier"
+# 
 
 # Options
 
