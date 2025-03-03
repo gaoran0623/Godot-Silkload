@@ -4,6 +4,12 @@
 
 Inspired by:  [GitHub - coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator](https://github.com/coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator)
 
+
+
+https://github.com/user-attachments/assets/9c8dc183-5015-4bf2-990b-5123b0eb00e0
+
+
+
 # How does it work
 
 It is only tested on Godot 4.4, since it's based on SkeletonModifier3D class.
