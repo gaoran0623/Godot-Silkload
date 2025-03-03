@@ -5,9 +5,7 @@
 Inspired by:  [GitHub - coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator](https://github.com/coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator)
 
 
-
-https://github.com/user-attachments/assets/9c8dc183-5015-4bf2-990b-5123b0eb00e0
-
+https://github.com/user-attachments/assets/cf236598-79c5-41be-9f85-1eff565f50d4
 
 
 # How does it work
