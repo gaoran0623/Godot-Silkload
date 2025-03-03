@@ -99,12 +99,12 @@ class collisionPoint:
 	var entered_body :bool = false;
 	var is_pin :bool= false
 	var collision_factor :float= 1 # Read docs for what this does
-	var dampen_factor :float= .98#0.98
+	var dampen_factor :float= .96#0.98
 	@onready var last_global_position = global_position
 	@onready var last_global_trans_basis_inverse= global_transform.basis.inverse()
 	@onready var last_position = position
 	func _ready():
-		mass=0 #the original mass is not usefull
+		mass=0.01 #the original mass is not usefull
 		set_gravity_scale(0.0) #the original gravity is not usefull, and will affect the verlet integration
 		continuous_cd = true
 		custom_integrator = true
@@ -149,7 +149,7 @@ class collisionPoint:
 			velocity *= collision_factor
 		velocity *= dampen_factor # damping
 		#verlet algorithm
-		position = position + (velocity * delta * 60) + (massFactor* grvty * delta * accelerationFactor) + (massFactor * inertiaForce *  delta * inertiaForceFactor)
+		position = position + (velocity * delta * 60) + (massFactor* grvty * delta * accelerationFactor) #- (massFactor * inertiaForce *  delta * inertiaForceFactor)
 		#position = 2*position - last_position + (grvty)*delta*delta*2
 		#position = get_parent().get_parent().to_local(2*global_position - last_global_position) + (grvty)*delta*delta
 
@@ -219,9 +219,9 @@ func link_PM():
 			link_list.append(new_link)
 			add_child(new_link)
 	if closedBoneLoop:
-		for j in PM_list[PM_list.size()].size(): #the last column
+		for j in PM_list[PM_list.size()-1].size()-1: #the last column
 			var new_link = link.new() 
-			new_link.PM_a = PM_list[PM_list.size()][j]
+			new_link.PM_a = PM_list[PM_list.size()-1][j]
 			new_link.PM_b = PM_list[0][j]
 			#new_link.resting_distance = PM_spacing
 			link_list.append(new_link)
