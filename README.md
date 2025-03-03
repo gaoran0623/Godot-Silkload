@@ -2,6 +2,8 @@
 
  A bone-driven cloth simulation solution for godot4.4+ 3D games, based on verlet integration algorithm.
 
+Inspired by:  [GitHub - coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator](https://github.com/coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator)
+
 # How does it work
 
 It is only tested on Godot 4.4, since it's based on SkeletonModifier3D class.
