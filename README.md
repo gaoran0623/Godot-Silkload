@@ -4,9 +4,7 @@
 
 Inspired by:  [GitHub - coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator](https://github.com/coffe789/Godot-2D-Cloth-and-Verlet-Physics-Simulator)
 
-
 https://github.com/user-attachments/assets/cf236598-79c5-41be-9f85-1eff565f50d4
-
 
 # How does it work
 
@@ -78,6 +76,12 @@ The Rigidbody3Ds that is instanced in prepresent of the bones
 
 # Options
 
+
+
+<p align="center">
+   <img src="media/Exports2025-03-03 233534.png" />
+
+
 #### Node Disabled
 
 For debugging, self explaining
@@ -90,25 +94,9 @@ For debugging, visulizing the colliders
 
 Decide if the verlet particle should be able to collide at the root.
 
-Normally the root will NOT be colliding, but who knows
+Normally the root will NOT be colliding, but who knowsRoot 
 
-#### Trim bonechain by
-
-Sometimes you don't want the whole bonechain to be simulated like cloth, in case that you need part of the bone chain to act
-
-#### Collider Shape Radius Base
-
-Note this will be the biggest collider's radius, but you can use the curve to derate along the bone chain
-
-#### Collider Size Curve
-
-Along the bone chain that existing available colliders, set the derating ratio of the colliders size. The trimmed bones will NOT be counted
-
-#### Closed Bone Loop
-
-Simulate a cylinder-like cloth such as skirt: true, or a piece of cloth, such as flag: false
-
-#### Root Bone Name List
+#### Bone Name List
 
 If the skeleton has a lot of bones, it's not convinient to select one by one, I'd rather type the names as Strings here. Just create the list of the names of the bone chains
 
@@ -128,3 +116,21 @@ bone[0][5] bone[1][5] bone[2][5] bone[3][5] bone[4][5]      |These bones will no
     |          |          |          |          |           |
 bone[0][6] bone[1][6] bone[2][6] bone[3][6] bone[4][6]   ───┘  
 ```
+
+#### Trim bonechain by
+
+Sometimes you don't want the whole bonechain to be simulated like cloth, in case that you need part of the bone chain to act
+
+#### Collider Shape Radius Base
+
+Note this will be the biggest collider's radius, but you can use the curve to derate along the bone chain
+
+#### Collider Size Curve
+
+Along the bone chain that existing available colliders, set the derating ratio of the colliders size. The trimmed bones will NOT be counted
+
+#### Closed Bone Loop
+
+Simulate a cylinder-like cloth such as skirt: true, or else a piece of cloth, such as flag: false
+
+
