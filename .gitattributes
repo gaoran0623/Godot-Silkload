@@ -2,3 +2,4 @@
 * text=auto
 
 /media/**       export-ignore
+/media       export-ignore
